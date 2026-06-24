@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package time.v1;
+
+option go_package = "github.com/imoudgil/servkit/proto/time/v1;timev1";
+
+// TimeService exposes a minimal RPC other services can call for clock sync.
+service TimeService {
+  rpc Now(NowRequest) returns (NowResponse);
+}
+
+message NowRequest {}
+
+message NowResponse {
+  int64 unix = 1;
+  string service = 2;
+}
